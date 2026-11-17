@@ -10,6 +10,7 @@
     // Start audio directly from the first interaction so browsers allow playback.
     const music = new Audio("./music/knick-knack-monochrome.mp3");
     music.loop = true;
+    music.currentTime = 2;
     music.play().catch((error) => console.warn("Music could not start:", error));
 
     try {
