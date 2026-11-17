@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KNICK KNACK</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main>
+    <section id="title-screen">
+      <h1>KNICK KNACK</h1>
+      <button id="intro-trigger" type="button">
+        <span class="intro-click-label">Click anywhere</span>
+        <span class="intro-tap-label">Tap anywhere</span>
+      </button>
+      <div id="mode-menu" aria-label="Game modes" hidden>
+        <button id="play-button" type="button">Play</button>
+        <button id="mix-button" type="button">Mix</button>
+        <button id="rainbow-button" type="button" aria-controls="rainbow-options" aria-expanded="false">Rainbow</button>
+        <div id="rainbow-options" role="group" aria-label="Rainbow difficulty" hidden>
+          <button id="rainbow-easy" type="button">Easy</button>
+          <button id="rainbow-medium" type="button">Medium</button>
+          <button id="rainbow-hard" type="button">Hard</button>
+        </div>
+      </div>
+      <div class="intro-toys" aria-hidden="true"></div>
+    </section>
+
+    <section id="game-screen" hidden>
+      <header class="game-header">
+        <details class="clue-control">
+          <summary>
+<img src="./mag-glass.png" alt="" width="34" height="35">            <span class="visually-hidden">Clues. Found </span>
+            <span id="clue-count">0/4</span>
+          </summary>
+          <ol id="clues"></ol>
+        </details>
+
+        <h2>KNICK KNACK</h2>
+        <button id="hint-button" type="button">Hint</button>
+      </header>
+
+      <p id="round-status" class="visually-hidden" aria-live="polite">
+        0 of 4 found.
+      </p>
+      <button id="next-level" type="button" hidden>Play Orange</button>
+      <button id="menu-button" type="button">Menu</button>
+      <div id="red-board" role="group" aria-label="Red toy collage"></div>
+    </section>
+  </main>
+
+  <script>
+    const clueControl = document.querySelector(".clue-control");
+
+    clueControl.addEventListener("pointerenter", (event) => {
+      if (event.pointerType === "mouse") clueControl.open = true;
+    });
+
+    clueControl.addEventListener("pointerleave", (event) => {
+      if (event.pointerType === "mouse") clueControl.open = false;
+    });
+
+  </script>
+  <script src="./intro-pile/toys.js"></script>
+  <script src="./toy-drop.js"></script>
+  <script src="./intro-pile/animation.js"></script>
+  <script src="./intro-start.js"></script>
+  <script src="red-objects.js"></script>
+  <script src="./orange-level.js"></script>
+  <script src="./yellow-level.js"></script>
+  <script src="./green-level.js"></script>
+  <script src="./blue-level.js"></script>
+  <script src="./assorted-levels.js"></script>
+  <script src="red-game.js"></script>
+</body>
+</html>
